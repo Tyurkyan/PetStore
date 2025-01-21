@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PetStore.Models.Response
+{
+    public class OwnerResponse
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public List<string> Pets { get; set; } 
+    }
+}
