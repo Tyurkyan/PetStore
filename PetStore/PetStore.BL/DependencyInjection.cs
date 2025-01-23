@@ -14,7 +14,6 @@ namespace PetStore.BL
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IBlOwnerPetService, BlOwnerPetService>();
 
-
             return services;
         }
     }
