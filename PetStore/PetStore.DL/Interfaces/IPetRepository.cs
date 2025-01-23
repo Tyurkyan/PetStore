@@ -11,8 +11,7 @@ namespace PetStore.DL.Interfaces
     {
         List<Pet> GetAll();
         Pet GetById(string id);
-        void Add(Pet pet);
-        void Remove(string id);
-        void Update(Pet pet);
+        void Create(Pet pet);
+        void Delete(string id);
     }
 }
