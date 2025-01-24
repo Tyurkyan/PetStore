@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore", "PetStore\PetStore.csproj", "{AA2178DA-0D90-4723-8AA8-E886124D499C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore", "PetStore\PetStore.csproj", "{AA2178DA-0D90-4723-8AA8-E886124D499C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.Models", "PetStore.Models\PetStore.Models.csproj", "{89D56D79-FB9D-4F07-A634-D8267A321FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Models", "PetStore.Models\PetStore.Models.csproj", "{89D56D79-FB9D-4F07-A634-D8267A321FEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.BL", "PetStore.BL\PetStore.BL.csproj", "{7D00E9FD-CD34-44CD-94E5-1793E651DB23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.BL", "PetStore.BL\PetStore.BL.csproj", "{7D00E9FD-CD34-44CD-94E5-1793E651DB23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.DL", "PetStore.DL\PetStore.DL.csproj", "{FDCDC234-6077-4079-8412-9C7A32589BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.DL", "PetStore.DL\PetStore.DL.csproj", "{FDCDC234-6077-4079-8412-9C7A32589BC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.Tests", "PetStore.Tests\PetStore.Tests.csproj", "{8E8DBF14-05D1-4D12-864A-F3214BA4E5C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FDCDC234-6077-4079-8412-9C7A32589BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDCDC234-6077-4079-8412-9C7A32589BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDCDC234-6077-4079-8412-9C7A32589BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8DBF14-05D1-4D12-864A-F3214BA4E5C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8DBF14-05D1-4D12-864A-F3214BA4E5C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8DBF14-05D1-4D12-864A-F3214BA4E5C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8DBF14-05D1-4D12-864A-F3214BA4E5C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

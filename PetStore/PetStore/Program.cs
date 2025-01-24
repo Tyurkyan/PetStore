@@ -5,6 +5,9 @@ using PetStore.DL;
 using Serilog.Sinks.SystemConsole.Themes;
 using Serilog;
 using PetStore.HealthCheck;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using PetStore.Validations;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +27,9 @@ builder.Services
 
 builder.Services.AddMapster();
 
+builder.Services.AddValidatorsFromAssemblyContaining<OwnerRequestValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<PetRequestValidator>();
+builder.Services.AddFluentValidationAutoValidation();
 
 
 
