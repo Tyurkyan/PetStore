@@ -19,15 +19,14 @@ namespace PetStore.Controllers
         }
 
         [HttpGet("GetPetByOwnerId/{id}")]
-        public IActionResult GetPetByOwnerId(string id)
+        public async Task<IActionResult> GetPetByOwnerId(string id)
         {
-            var pets = _blOwnerPetService.GetPetByOwnerId(id);
-            if (pets == null || !pets.Any())
-            {
-                return NotFound("No pets found for the given owner.");
-            }
+            var pets = await _blOwnerPetService.GetPetByOwnerIdAsync(id);
 
-            var petResponses = pets.Select(pet => _mapper.Map<PetResponse>(pet));
+            if (pets == null || !pets.Any())
+                return NotFound("No pets found for the given owner.");
+
+            var petResponses = pets.Select(_mapper.Map<PetResponse>);
             return Ok(petResponses);
         }
     }

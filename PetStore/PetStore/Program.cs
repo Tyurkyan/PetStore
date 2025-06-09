@@ -8,6 +8,8 @@ using PetStore.HealthCheck;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using PetStore.Validations;
+using PetStore.DL.Gateways;
+using PetStore.DL.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +24,7 @@ var logger = new LoggerConfiguration()
 // Add services to the container.
 builder.Services
     .AddConfigurations(builder.Configuration)
-    .AddDataDependencies()
+     .AddDataDependencies(builder.Configuration)
     .AddBusinessDependencies();
 
 builder.Services.AddMapster();
@@ -30,6 +32,7 @@ builder.Services.AddMapster();
 builder.Services.AddValidatorsFromAssemblyContaining<OwnerRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<PetRequestValidator>();
 builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddScoped<IPetBioGateway, PetBioGateway>();
 
 
 

@@ -13,12 +13,13 @@ namespace PetStore.BL.Services
         {
             _ownerRepository = ownerRepository;
         }
-        public List<Owner> GetAllOwners() => _ownerRepository.GetAll();
 
-        public Owner GetOwnerById(string id) => _ownerRepository.GetById(id);
+        public Task<List<Owner>> GetAllOwnersAsync() => _ownerRepository.GetAllAsync();
 
-        public void AddOwner(Owner owner) => _ownerRepository.Create(owner);
+        public Task<Owner> GetOwnerByIdAsync(string id) => _ownerRepository.GetByIdAsync(id);
 
-        public void RemoveOwner(string id) => _ownerRepository.Delete(id);
+        public Task AddOwnerAsync(Owner owner) => _ownerRepository.CreateAsync(owner);
+
+        public Task RemoveOwnerAsync(string id) => _ownerRepository.DeleteAsync(id);
     }
 }

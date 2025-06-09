@@ -20,25 +20,38 @@ namespace PetStore.DL.Repositories
             _owners = database.GetCollection<Owner>($"{nameof(Owner)}s");
         }
 
-        public List<Owner> GetAll()
+        public async Task<List<Owner>> GetAllAsync()
         {
-            return _owners.Find(_ => true).ToList();
+            var result = await _owners.FindAsync(_ => true);
+            return await result.ToListAsync();
         }
 
-        public Owner GetById(string id)
+        public async Task<Owner> GetByIdAsync(string id)
         {
-            return _owners.Find(owner => owner.Id == id).FirstOrDefault();
+            var result = await _owners.FindAsync(owner => owner.Id == id);
+            return await result.FirstOrDefaultAsync();
         }
 
-        public void Create(Owner owner)
+        public async Task CreateAsync(Owner owner)
         {
             owner.Id = Guid.NewGuid().ToString();
-            _owners.InsertOne(owner);
+            await _owners.InsertOneAsync(owner);
         }
 
-        public void Delete(string id)
+        public async Task DeleteAsync(string id)
         {
-            _owners.DeleteOne(owner => owner.Id == id);
+            await _owners.DeleteOneAsync(owner => owner.Id == id);
+        }
+
+        public async Task<IEnumerable<Owner>> DifLoad(DateTime lastExecuted)
+        {
+            var result = await _owners.FindAsync(owner => owner.DateInserted >= lastExecuted);
+            return await result.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Owner>> FullLoad()
+        {
+            return await GetAllAsync();
         }
     }
 }

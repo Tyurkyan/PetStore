@@ -4,6 +4,6 @@ namespace PetStore.BL.Interfaces
 {
     public interface IBlOwnerPetService
     {
-        List<Pet> GetPetByOwnerId(string ownerId);
+        Task<List<Pet>> GetPetByOwnerIdAsync(string ownerId);
     }
 }

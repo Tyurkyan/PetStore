@@ -21,12 +21,12 @@ namespace PetStore.Controllers
         }
 
         [HttpGet("GetAll")]
-        public ActionResult<IEnumerable<OwnerResponse>> GetAllOwners()
+        public async Task<ActionResult<IEnumerable<OwnerResponse>>> GetAllOwners()
         {
             try
             {
-                var owners = _ownerService.GetAllOwners();
-                var ownerResponses = owners.Select(owner => _mapper.Map<OwnerResponse>(owner));
+                var owners = await _ownerService.GetAllOwnersAsync();
+                var ownerResponses = owners.Select(_mapper.Map<OwnerResponse>);
                 return Ok(ownerResponses);
             }
             catch
@@ -36,38 +36,31 @@ namespace PetStore.Controllers
         }
 
         [HttpGet("GetById/{id}")]
-        public IActionResult GetOwnerById(string id)
+        public async Task<IActionResult> GetOwnerById(string id)
         {
-            var owner = _ownerService.GetOwnerById(id);
+            var owner = await _ownerService.GetOwnerByIdAsync(id);
 
-            if (owner == null)
-            {
-                return NotFound();
-            }
+            if (owner == null) return NotFound();
 
-            var ownerResponse = _mapper.Map<OwnerResponse>(owner);
-            return Ok(ownerResponse);
+            return Ok(_mapper.Map<OwnerResponse>(owner));
         }
 
         [HttpPost("AddOwner")]
-        public ActionResult<OwnerResponse> AddOwner([FromBody] OwnerRequest ownerRequest)
+        public async Task<ActionResult<OwnerResponse>> AddOwner([FromBody] OwnerRequest ownerRequest)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var owner = _mapper.Map<Owner>(ownerRequest);
-            _ownerService.AddOwner(owner);
+            await _ownerService.AddOwnerAsync(owner);
 
             var ownerResponse = _mapper.Map<OwnerResponse>(owner);
             return CreatedAtAction(nameof(GetOwnerById), new { id = owner.Id }, ownerResponse);
         }
 
         [HttpDelete("Delete/{id}")]
-        public IActionResult DeleteOwner(string id)
+        public async Task<IActionResult> DeleteOwner(string id)
         {
-            _ownerService.RemoveOwner(id);
+            await _ownerService.RemoveOwnerAsync(id);
             return NoContent();
         }
     }

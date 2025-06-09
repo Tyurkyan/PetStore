@@ -1,17 +1,13 @@
-﻿using PetStore.Models.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PetStore.DL.Cache;
+using PetStore.Models.DTO;
 
 namespace PetStore.DL.Interfaces
 {
-    public interface IPetRepository
+    public interface IPetRepository : ICacheRepository<string,Pet>
     {
-        List<Pet> GetAll();
-        Pet GetById(string id);
-        void Create(Pet pet);
-        void Delete(string id);
+        Task<List<Pet>> GetAllAsync();
+        Task<Pet> GetByIdAsync(string id);
+        Task CreateAsync(Pet pet);
+        Task DeleteAsync(string id);
     }
 }

@@ -15,9 +15,10 @@ namespace PetStore.BL.Services
             _petRepository = petRepository;
         }
 
-        public List<Pet> GetPetByOwnerId(string ownerId)
+        public async Task<List<Pet>> GetPetByOwnerIdAsync(string ownerId)
         {
-            return _petRepository.GetAll().Where(pet => pet.OwnerId == ownerId).ToList();
+            var pets = await _petRepository.GetAllAsync();
+            return pets.FindAll(pet => pet.OwnerId == ownerId);
         }
     }
 }

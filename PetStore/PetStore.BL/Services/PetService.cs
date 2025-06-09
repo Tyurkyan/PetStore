@@ -13,13 +13,12 @@ namespace PetStore.BL.Services
             _petRepository = petRepository;
         }
 
-        public List<Pet> GetAllPets() => _petRepository.GetAll();
+        public Task<List<Pet>> GetAllPetsAsync() => _petRepository.GetAllAsync();
 
-        public Pet GetPetById(string id) => _petRepository.GetById(id);
+        public Task<Pet> GetPetByIdAsync(string id) => _petRepository.GetByIdAsync(id);
 
-        public void AddPet(Pet pet) => _petRepository.Create(pet);
+        public Task AddPetAsync(Pet pet) => _petRepository.CreateAsync(pet);
 
-        public void RemovePet(string id) => _petRepository.Delete(id);
-
+        public Task RemovePetAsync(string id) => _petRepository.DeleteAsync(id);
     }
 }
